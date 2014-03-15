@@ -21,6 +21,8 @@
 	<meta name="color:Background" content="#dbd6a0" />	
 	<meta name="text:Disqus Shortname" content="" />
 	<meta name="text:Google Plus Shortname" content="" />
+	<meta name="text:Google Analytics UA Code" content="" /> 
+    
 	
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=7" />
@@ -39,7 +41,7 @@
 	
 	<link rel='stylesheet' id='twentyfourteen-lato-css'  href='//fonts.googleapis.com/css?family=Lato%3A300%2C400%2C700%2C900%2C300italic%2C400italic%2C700italic' type='text/css' media='all' />
 <link rel='stylesheet' id='genericons-css'  href='//cdn.jsdelivr.net/genericons/3.0.3/genericons.css' type='text/css' media='all' />
-<link rel='stylesheet' id='twentyfourteen-style-css'  href='http://static.tumblr.com/b86fb3h/2i5n1slvq/fett.css' type='text/css' media='all' />
+<link rel='stylesheet' id='twentyfourteen-style-css'  href='https://github.com/fredrikhimlen/fredrikhimlen100/raw/master/fredrikhimlen100.css' type='text/css' media='all' />
 
 	
 	<style type="text/css">
@@ -55,7 +57,7 @@
 	</script>
 	
 </head>
-<body class="blog custom-background masthead-fixed">
+<body class="blog custom-background masthead-fixed full-width">
 <div id="page" class="hfeed site">
 	
 	<header id="masthead" class="site-header" role="banner">
@@ -63,25 +65,18 @@
 		    <h1 class="site-title"><a href="/">{Title}</a></h1>
             
             <div class="search-toggle">
-				<a href="#search-container" class="screen-reader-text">Sök</a>
+				<a href="#search-container" class="screen-reader-text">{lang:Search}</a>
 			</div>
 			
 			<nav id="primary-navigation" class="site-navigation primary-navigation" role="navigation">
-				<h1 class="menu-toggle">Primär meny</h1>
+				<h1 class="menu-toggle">Primary menu</h1>
 				<a class="screen-reader-text skip-link" href="#content">Hoppa till innehåll</a>
-				<div class="menu-grundmeny-container"><ul id="menu-grundmeny" class="nav-menu">
-				     <li><a href="">+</a><ul>
-				        <li><a href="http://fredrikhimlen.se">Fredrikhimlen</a></li>
-				        <li><a href="http://fredrikhulth.se">Fredrik Hulth</a></li>
-				        <li><a href="http://plus.google.com/+FredrikHulth">Google+</a></li>
-				        <li><a href="http://twitter.com/fredrikhimlen">Twitter</a></li>
-				    </ul></li>
-				    {block:HasPages}
+				<div class="menu-container"><ul class="nav-menu">
+				     {block:HasPages}
 				        {block:Pages}<li class="menu-item"><a href="{URL}">{Label}</a></li>{/block:Pages}
 				    {/block:HasPages}
 				    {block:AskEnabled}<li class="menu-item"><a href="/ask">{AskLabel}</a></li>{/block:AskEnabled}
 				    {block:SubmissionsEnabled}<li class="menu-item"><a href="/submit">{SubmitLabel}</a></li>{/block:SubmissionsEnabled}
-				   
 				</ul></div>
 			</nav>
 		</div>
@@ -91,7 +86,7 @@
 				<form role="search" method="get" class="search-form" action="/search">
 				<label>
 					<span class="screen-reader-text">Sök efter:</span>
-					<input type="search" class="search-field" placeholder="{lang:Search} &hellip;" value="{SearchQuery}" name="q" title="Sök efter:" />
+					<input type="search" class="search-field" placeholder="{lang:Search} &hellip;" value="{SearchQuery}" name="q" title="{lang:Search}" />
 				</label>
 				<input type="submit" class="search-submit" value="{lang:Search}" />
 			</form>			</div>
@@ -114,182 +109,208 @@
 		{block:TagPage}<div class="result"><p>{lang:TagResultCount posts tagged Tag 3}</p></div>{/block:TagPage}			
 				
 				{block:Posts}
-					{block:Text}
-					<article class="post text">
-						<header class="entry-header">		
-							{block:Title}<h1 class="entry-title"><a href="{Permalink}">{Title}</a></h1>{/block:Title}
-							<div class="entry-meta">
-						          {block:Date}
-						          <span class="entry-date"><time class="entry-date" datetime="{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}T{24HourWithZero}:{Minutes}">{TimeAgo}</time></span>
-						          {/block:Date}
-						          {block:HasTags}<span class="tag-links">{block:Tags}<a href="{TagURL}">{Tag}</a>{/block:Tags}</span>{/block:HasTags}
-						          {block:IfDisqusShortname}<span class="comments-link"><a href="{Permalink}#disqus_thread"><span class="dsq-comment-count">{lang:Comments}</span></a></span>{/block:IfDisqusShortname}
-				        	</div>
-						</header><!-- .entry-header -->
-
-						<div class="entry-content">{Body}</div>
-					{/block:Text}
-					{block:Link}
-					<article class="post link">
-						<header class="entry-header">		
-							{block:Title}<h1 class="entry-title"><a href="{URL}">{Title}</a></h1>{/block:Title}
-							<div class="entry-meta">
-						          {block:Date}
-						          <span class="entry-date"><time class="entry-date" datetime="{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}T{24HourWithZero}:{Minutes}">{TimeAgo}</time></span>
-						          {/block:Date}
-						          {block:HasTags}<span class="tag-links">{block:Tags}<a href="{TagURL}">{Tag}</a>{/block:Tags}</span>{/block:HasTags}
-						          {block:IfDisqusShortname}<span class="comments-link"><a href="{Permalink}#disqus_thread"><span class="dsq-comment-count">{lang:Comments}</span></a></span>{/block:IfDisqusShortname}
-				        	</div>
-						</header><!-- .entry-header -->
-
-						<div class="entry-content">{block:Description}
-		                        <div class="description">{Description}</div>
-		                    {/block:Description}</div>
-					{/block:Link}
+					<article class="post {block:Text}text{/block:Text}{block:Photo}photo{/block:Photo}{block:Quote}quote{/block:Quote}{block:Video}video{/block:Video}{block:Link}link{/block:Link}{block:Chat}chat{/block:Chat}{block:Audio}audio{/block:Audio}{block:Answer}answer{/block:Answer} {TagsAsClasses}">
 					{block:Photo}
-					<article class="post image">
 						<a class="post-thumbnail" href=""><img src="{PhotoURL-500}" alt="{PhotoAlt}"/></a>
-						<header class="entry-header">		
-							{block:Title}<h1 class="entry-title"><a href="{Permalink}">{Title}</a></h1>{/block:Title}
-							<div class="entry-meta">
-						          {block:Date}
-						          <span class="entry-date"><time class="entry-date" datetime="{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}T{24HourWithZero}:{Minutes}">{TimeAgo}</time></span>
-						          {/block:Date}
-						          {block:HasTags}<span class="tag-links">{block:Tags}<a href="{TagURL}">{Tag}</a>{/block:Tags}</span>{/block:HasTags}
-						          {block:IfDisqusShortname}<span class="comments-link"><a href="{Permalink}#disqus_thread"><span class="dsq-comment-count">{lang:Comments}</span></a></span>{/block:IfDisqusShortname}
-				        	</div>
-						</header><!-- .entry-header -->
-
-						<div class="entry-content">{block:Caption}
-							<div class="caption">{Caption}</div>
-							{/block:Caption}</div>
 					{/block:Photo}
-					
-					{block:Photoset}
-					<article class="post image">
-						
 						<header class="entry-header">		
 							{block:Title}<h1 class="entry-title"><a href="{Permalink}">{Title}</a></h1>{/block:Title}
 							<div class="entry-meta">
 						          {block:Date}
-						          <span class="entry-date"><time class="entry-date" datetime="{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}T{24HourWithZero}:{Minutes}">{TimeAgo}</time></span>
+						          <span class="entry-date"><time class="entry-date" datetime="{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}T{24HourWithZero}:{Minutes}">{block:NotReblog}
+                <a href="{Permalink}">{lang:Posted TimeAgo}</a>
+              {/block:NotReblog}
+              {block:Reblog}
+                {lang:PostTypeNoun reblogged from ReblogParentTitle 2}
+              {/block:Reblog}</time></span>
 						          {/block:Date}
 						          {block:HasTags}<span class="tag-links">{block:Tags}<a href="{TagURL}">{Tag}</a>{/block:Tags}</span>{/block:HasTags}
 						          {block:IfDisqusShortname}<span class="comments-link"><a href="{Permalink}#disqus_thread"><span class="dsq-comment-count">{lang:Comments}</span></a></span>{/block:IfDisqusShortname}
 				        	</div>
 						</header><!-- .entry-header -->
-
 						<div class="entry-content">
-						    {Photoset-500}
-		
-							{block:Caption}
-							<div class="caption">{Caption}</div>
-							{/block:Caption}
-							    
-						</div>
-					{/block:Photoset}
-					
-					
-					{block:Quote}
-					<article class="post quote">
-						<header class="entry-header">		
-							{block:Title}<h1 class="entry-title"><a href="{Permalink}">{Title}</a></h1>{/block:Title}
-							<div class="entry-meta">
-						          {block:Date}
-						          <span class="entry-date"><time class="entry-date" datetime="{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}T{24HourWithZero}:{Minutes}">{TimeAgo}</time></span>
-						          {/block:Date}
-						          {block:HasTags}<span class="tag-links">{block:Tags}<a href="{TagURL}">{Tag}</a>{/block:Tags}</span>{/block:HasTags}
-						          {block:IfDisqusShortname}<span class="comments-link"><a href="{Permalink}#disqus_thread"><span class="dsq-comment-count">{lang:Comments}</span></a></span>{/block:IfDisqusShortname}
-				        	</div>
-						</header><!-- .entry-header -->
+					<!-- ANSWER -->
+              
+              {block:Answer}
+                
+                <div class="QUOTEINFO">
+                  
+                  <div class="QUOTEMARK"></div>
+                  <div class="TEXT">
+                    {Question}
+                  </div>
+                
+                </div>
+                
+                <p>{lang:Asked by Asker}</p>
+                
+                <div class="BREAK"></div>
+                
+                <div class="RESPONSE">
+                
+                  {Answer}
+                
+                </div>
 
-						<div class="entry-content"><blockquote cite="url">
-								<p>"{Quote}"</p>
-							</blockquote>
-							{block:Source}
-							<div class="source">{Source}</div>
-							{block:Source}</div>
-					{/block:Quote}
-					{block:Chat}
-					<article class="post chat">
-						<header class="entry-header">		
-							{block:Title}<h1 class="entry-title"><a href="{Permalink}">{Title}</a></h1>{/block:Title}
-							<div class="entry-meta">
-						          {block:Date}
-						          <span class="entry-date"><time class="entry-date" datetime="{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}T{24HourWithZero}:{Minutes}">{TimeAgo}</time></span>
-						          {/block:Date}
-						          {block:HasTags}<span class="tag-links">{block:Tags}<a href="{TagURL}">{Tag}</a>{/block:Tags}</span>{/block:HasTags}
-						          {block:IfDisqusShortname}<span class="comments-link"><a href="{Permalink}#disqus_thread"><span class="dsq-comment-count">{lang:Comments}</span></a></span>{/block:IfDisqusShortname}
-				        	</div>
-						</header><!-- .entry-header -->
+              {/block:Answer}
+              
+              <!-- /ANSWER -->
+              
+              <!-- TEXT -->
+              
+              {block:Text}
+                
+                {Body}
+                
+              {/block:Text}
+              
+              <!-- /TEXT -->
+              
+              <!-- VIDEO -->
+              
+              {block:Video}
+                
+                {Video-500}
+                
+                {block:Caption}
+                  {Caption}
+                {/block:Caption}
+                
+              {/block:Video}
+              
+              <!-- /VIDEO -->
+              
+              <!-- PHOTO -->
+              
+              {block:Photo}
 
-						<div class="entry-content"><blockquote cite="url">
-								<p>"{Quote}"</p>
-							</blockquote>
-							{block:Source}
-							<div class="source">{Source}</div>
-							{block:Source}</div>
-					{/block:Chat}
-					{block:Video}
-					<article class="post video">
-						<header class="entry-header">		
-							{block:Title}<h1 class="entry-title"><a href="{Permalink}">{Title}</a></h1>{/block:Title}
-							<div class="entry-meta">
-						          {block:Date}
-						          <span class="entry-date"><time class="entry-date" datetime="{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}T{24HourWithZero}:{Minutes}">{TimeAgo}</time></span>
-						          {/block:Date}
-						          {block:HasTags}<span class="tag-links">{block:Tags}<a href="{TagURL}">{Tag}</a>{/block:Tags}</span>{/block:HasTags}
-						          {block:IfDisqusShortname}<span class="comments-link"><a href="{Permalink}#disqus_thread"><span class="dsq-comment-count">{lang:Comments}</span></a></span>{/block:IfDisqusShortname}
-				        	</div>
-						</header><!-- .entry-header -->
+                {block:Caption}
+                  <div class="CAPTION">
+                    {Caption}
+                  </div>
+                {/block:Caption}
+                
+              {/block:Photo}
+              
+              <!-- /PHOTO -->
+              
+              <!-- QUOTE -->
+              
+              {block:Quote}
+              
+                <div class="QUOTEINFO">
+                  
+                  <div class="QUOTEMARK"></div>
+                  <div class="TEXT">
+                    {Quote}
+                  </div>
+                
+                </div>
+                
+                <div class="BREAK"></div>
+                
+                {block:Source}
+                <div class="BY">
+                
+                  {Source}
+                
+                </div>
+                {/block:Source}
+                
+              {/block:Quote}
+              
+              <!-- /QUOTE -->
 
-						<div class="entry-content">	{Video-500}
-							
-							{block:Caption}
-								<div class="caption">
-									<p>{Caption}</p>
-								</div>
-							{/block:Caption}</div>
-					{/block:Video}
-					{block:Audio}
-					<article class="post audio">
-						<header class="entry-header">		
-							{block:Title}<h1 class="entry-title"><a href="{Permalink}">{Title}</a></h1>{/block:Title}
-							<div class="entry-meta">
-						          {block:Date}
-						          <span class="entry-date"><time class="entry-date" datetime="{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}T{24HourWithZero}:{Minutes}">{TimeAgo}</time></span>
-						          {/block:Date}
-						          {block:HasTags}<span class="tag-links">{block:Tags}<a href="{TagURL}">{Tag}</a>{/block:Tags}</span>{/block:HasTags}
-						          {block:IfDisqusShortname}<span class="comments-link"><a href="{Permalink}#disqus_thread"><span class="dsq-comment-count">{lang:Comments}</span></a></span>{/block:IfDisqusShortname}
-				        	</div>
-						</header><!-- .entry-header -->
+              <!-- LINK -->
+              
+              {block:Link}
+                
+                <div class="THE-LINK">
+                
+                  <a href="{URL}" target="{Target}">{Name}</a>
+                    
+                </div>
+                
+                <div class="INFO">
+                  <a href="{URL}" target="{Target}">
+                    {URL}
+                  </a>
+                </div>
+                
+                {block:Description}         
+                <div class="MARGIN">{Description}</div>
+                {/block:Description}
+                
+              {/block:Link}
+              
+              <!-- /LINK -->
 
-						<div class="entry-content">	{AudioPlayerBlack}
-							
-							{block:Caption}
-								<div class="caption">
-									<p>{Caption}</p>
-								</div>
-							{/block:Caption}</div>
-					{/block:Audio}
-					{block:Answer}
-					<article class="post answer">
-						<header class="entry-header">		
-							{block:Title}<h1 class="entry-title"><a href="{Permalink}">{Title}</a></h1>{/block:Title}
-							<div class="entry-meta">
-						          {block:Date}
-						          <span class="entry-date"><time class="entry-date" datetime="{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}T{24HourWithZero}:{Minutes}">{TimeAgo}</time></span>
-						          {/block:Date}
-						          {block:HasTags}<span class="tag-links">{block:Tags}<a href="{TagURL}">{Tag}</a>{/block:Tags}</span>{/block:HasTags}
-						          {block:IfDisqusShortname}<span class="comments-link"><a href="{Permalink}#disqus_thread"><span class="dsq-comment-count">{lang:Comments}</span></a></span>{/block:IfDisqusShortname}
-				        	</div>
-						</header><!-- .entry-header -->
+              <!-- CHAT -->
+              
+              {block:Chat}
+                
+                <ul class="CHAT">
+                
+                  {block:Lines}
+                  <li class="{Alt} {UserNumber}">{block:Label}<strong>{Label}</strong> {/block:Label}{Line}</li>
+                  {/block:Lines}
+                  
+                </ul>
+                
+              {/block:Chat}
+              
+              <!-- /CHAT -->
 
-						<div class="entry-content"><img src="{AskerPortraitURL-40}">
-				{Asker}
-				{Question}
-				{Answer}</div>
-					{/block:Answer}
+              <!-- AUDIO -->
+              
+              {block:Audio}
+                
+                <div class="PLAYER">
+                
+                  <div class="ALBUMART">
+                    
+                    {block:AlbumArt}<img  alt="" src="{AlbumArtURL}" />{/block:AlbumArt}
+                    
+                  </div>
+                  
+                  <div class="OVERLAY">
+                    
+                    <div class="OBJ">
+                      {AudioPlayerGrey}
+                    </div>
+                  
+                    <div class="COUNT">
+                      This track has had {PlayCountWithLabel}
+                    </div>
+                    
+                    <div class="TRACK">
+                      {block:TrackName}
+                        <strong>{TrackName}</strong>
+                      {/block:TrackName}
+                      
+                      {block:TrackName}
+                        {block:Artist}
+                          by
+                        {/block:Artist}
+                      {/block:TrackName}
+                      
+                      {block:Artist}
+                      <a href="http://last.fm/{Artist}">{Artist}</a>
+                      {/block:Artist}
+                    </div>
+                    
+                  </div>
+                
+                </div>
+                
+                {block:Caption}
+                  {Caption}
+                {/block:Caption}
+                
+              {/block:Audio}
+              
+              <!-- /AUDIO -->   
+					</div>
 					
 					
 				</article><!-- #post-## -->					
@@ -304,7 +325,7 @@
 				</div>
 				<script charset="utf-8" type="text/javascript" src="http://disqus.com/forums/{text:Disqus Shortname}/embed.js"></script>
 				{lang:Blog comments powered by Disqus 2}
-				{block:IfDisqusShortname}
+				{/block:IfDisqusShortname}
 				{/block:Permalink}
 				
 				
@@ -330,14 +351,16 @@
 				
 				
 				{block:Pagination}
-				<div class="pagination loop-pagination">
-                    {block:PreviousPage}<a class="next page-numbers" href="{PreviousPage}">{lang:Newer} &larr;</a>{/block:PreviousPage}	
+			<nav class="navigation paging-navigation" role="navigation">
+			<div class="pagination loop-pagination">
+                    {block:PreviousPage}<a class="next page-numbers" href="{PreviousPage}">&larr; {lang:Newer}</a>{/block:PreviousPage}	
                     {block:JumpPagination length="5"}
-				        {block:CurrentPage}<span class="page-numbers current-page">{PageNumber}</span>{/block:CurrentPage}
+				        {block:CurrentPage}<span class="page-numbers current current-page">{PageNumber}</span>{/block:CurrentPage}
 				        {block:JumpPage}<a class="page-numbers jump-page" href="{URL}">{PageNumber}</a>{/block:JumpPage}
 			        {/block:JumpPagination}
 			        {block:NextPage}<a class="next page-numbers" href="{NextPage}">{lang:Older} &rarr;</a>{/block:NextPage}	
                 </div>
+</nav>
 				{/block:Pagination}
 	        
 	    </div><!-- #content -->
@@ -349,10 +372,23 @@
 		<footer id="colophon" class="site-footer" role="contentinfo">
 
 			<div class="site-info">
-				{Description} <br /> Bloggen ligger hos <a href="http://www.tumblr.com">Tumblr</a>
+				{Description} <br /> {lang:Powered by Tumblr 2}.
 			</div><!-- .site-info -->
 		</footer><!-- #colophon -->
 	</div><!-- #page -->
 	<script type='text/javascript' src='http://static.tumblr.com/b86fb3h/FWOn1sm8k/fett-functions.js'></script>
+{block:IfGoogleAnalyticsUACode}
+    <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+      try {
+      var pageTracker = _gat._getTracker("{text:Google Analytics UA Code}");
+      pageTracker._trackPageview();
+      } catch(err) {}
+    </script>
+    {/block:IfGoogleAnalyticsUACode}
+
 </body>
 </html>
